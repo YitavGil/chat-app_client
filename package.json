@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,9 +11,15 @@
     "@types/node": "^16.11.33",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
+    "@types/react-responsive": "^8.0.5",
     "react": "^18.1.0",
+    "react-burger-menu": "file:/E:/Course/FrontEnd Projects/rent/react-burger-menu-3.0.6.tgz",
     "react-dom": "^18.1.0",
+    "react-redux": "^8.0.1",
+    "react-responsive": "^9.0.0-beta.7",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.5",
+    "twin.macro": "^2.8.2",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
@@ -39,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.25",
+    "tailwindcss": "^3.0.24"
   }
 }
