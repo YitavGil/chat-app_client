@@ -32,19 +32,19 @@ const BaseButton = styled.button`
 
 const OutlinedButton = styled(BaseButton)`
   ${tw`
-    bg-red-500
+    bg-blue-500
     hover:bg-transparent
-    hover:text-red-500
-    hover:border-red-500
+    hover:text-blue-500
+    hover:border-blue-500
   `};
 `;
 
 const FilledButton = styled(BaseButton)`
   ${tw`
-    border-red-500
-    text-red-500
+    border-blue-500
+    text-blue-500
     bg-transparent
-    hover:bg-red-500
+    hover:bg-blue-500
     hover:text-white
     hover:border-transparent
   `};

@@ -1,16 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-import tw from 'twin.macro';
-import blobImg from '../../assets/images/blob.svg'
-import { SCREENS } from '../../components/responsive';
-import homeImg from '../../assets/images/home.jpg';
-import home2 from '../../assets/images/home2.png'
-
+import React from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
+import blobImg from "../../assets/images/blob.svg";
+import { SCREENS } from "../../components/responsive";
+import homeImg from "../../assets/images/home.jpg";
+import { Button } from "../../components/button";
 
 const TopSectionContainer = styled.div`
-    min-height: 400px;
-    margin-top: 6rem;
-    ${tw`
+  min-height: 400px;
+  margin-top: 6rem;
+  ${tw`
         w-full
         max-w-screen-2xl
         flex
@@ -20,11 +19,10 @@ const TopSectionContainer = styled.div`
         lg:pl-12
         lg:pr-12
     `}
-
 `;
 
 const LeftContainer = styled.div`
-    ${tw`
+  ${tw`
         w-1/2
         flex
         flex-col
@@ -32,7 +30,7 @@ const LeftContainer = styled.div`
 `;
 
 const RightContainer = styled.div`
-    ${tw`
+  ${tw`
         w-1/2
         flex
         flex-col
@@ -42,7 +40,8 @@ const RightContainer = styled.div`
 `;
 
 const Slogan = styled.h1`
-    ${tw`
+font-family: 'Pacifico', cursive;
+  ${tw`
         font-bold
         text-2xl
         xl:text-6xl
@@ -134,23 +133,33 @@ const StandaloneHome = styled.div`
   }
 `;
 
+const ButtonsContainer = styled.div`
+  ${tw`
+        flex
+    `}
+`;
+
 const TopSection = () => {
   return (
     <TopSectionContainer>
-        <LeftContainer>
-            <Slogan>Find Your Second Home</Slogan>
-            <Description>Description</Description>
-        </LeftContainer>
-        <RightContainer>
-            <BlobContainer>
-                <img src={blobImg} alt='blob' />
-            </BlobContainer>
-            <StandaloneHome>
-                <img src={homeImg} alt='home' />
-            </StandaloneHome>
-        </RightContainer>
+      <LeftContainer>
+        <Slogan>Find Your Second Home</Slogan>
+        <Description>Description</Description>
+        <ButtonsContainer>
+          <Button text="Book Your Apartment!" />
+          <Button theme="filled" text="Advertise Your Asset!" />
+        </ButtonsContainer>
+      </LeftContainer>
+      <RightContainer>
+        <BlobContainer>
+          <img src={blobImg} alt="blob" />
+        </BlobContainer>
+        <StandaloneHome>
+          <img src={homeImg} alt="home" />
+        </StandaloneHome>
+      </RightContainer>
     </TopSectionContainer>
-  )
-}
+  );
+};
 
-export default TopSection
+export default TopSection;
