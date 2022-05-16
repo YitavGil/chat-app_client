@@ -1,10 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
-import tw from 'twin.macro';
-import { SCREENS } from '../responsive';
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import tw from "twin.macro";
+import { SCREENS } from "../responsive";
+import { Marginer } from "../margeiner";
+import { Button } from "../button";
 
-const CardContainer = styled.div `
-    ${tw`
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+
+const CardContainer = styled.div`
+  min-height: 4.5rem;
+  box-shadow: 0 1.3px 12px -3px rgba(0, 0, 0, 0.4);
+  ${tw`
         flex
         justify-center
         items-center
@@ -16,14 +25,16 @@ const CardContainer = styled.div `
         pl-2
         md:pt-2
         md:pb-2
-        md:pl-6
-        md:pr-6
+        md:pl-9
+        md:pr-9
     `};
-
 `;
 
 const ItemContainer = styled.div`
-    ${tw`flex`};
+  ${tw`
+    flex
+    relative
+    `};
 `;
 
 const Icon = styled.span`
@@ -86,10 +97,43 @@ const DateCalendar = styled(Calendar)`
   }
 ` as any;
 
-const BookCard = () => {
-  return (
-    <div>BookCard</div>
-  )
-}
 
-export default BookCard
+const BookCard = () => {
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [isStartCalendarOpen, setIsStartCalendarOpen] = useState(false);
+  const [returnDate, setReturnDate] = useState<Date>(new Date());
+  const [isReturnCalendarOpen, setIsReturnCalendarOpen] = useState(false);
+
+  const toggleStartDateCalendar = () => {
+    setIsStartCalendarOpen(!isStartCalendarOpen);
+  }
+
+  const toggleReturnDateCalendar = () => {
+    setIsReturnCalendarOpen(!isReturnCalendarOpen);
+  }
+  
+
+  return (
+    <CardContainer>
+      <ItemContainer>
+        <Icon>
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </Icon>
+        <Name onClick={toggleStartDateCalendar}>Arrive Date</Name>
+       {isStartCalendarOpen && <DateCalendar value={startDate} onChange={setStartDate} />}
+      </ItemContainer>
+      <LineSeperator />
+      <ItemContainer>
+        <Icon>
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </Icon>
+        <Name onClick={toggleReturnDateCalendar}>Return Date</Name>
+        {isReturnCalendarOpen && <DateCalendar value={returnDate} onChange={setReturnDate} />}
+      </ItemContainer>
+      <Marginer direction="horizontal" margin="2em" />
+      <Button text="Book Your Stay" />
+    </CardContainer>
+  );
+};
+
+export default BookCard;
