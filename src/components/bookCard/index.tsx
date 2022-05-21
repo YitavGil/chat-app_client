@@ -1,4 +1,4 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
@@ -106,10 +106,12 @@ const BookCard = () => {
 
   const toggleStartDateCalendar = () => {
     setIsStartCalendarOpen(!isStartCalendarOpen);
+    if(isReturnCalendarOpen) setIsReturnCalendarOpen(false) 
   }
 
   const toggleReturnDateCalendar = () => {
     setIsReturnCalendarOpen(!isReturnCalendarOpen);
+    if(isStartCalendarOpen) setIsStartCalendarOpen(false) 
   }
   
 
@@ -120,6 +122,9 @@ const BookCard = () => {
           <FontAwesomeIcon icon={faCalendarAlt} />
         </Icon>
         <Name onClick={toggleStartDateCalendar}>Arrive Date</Name>
+        <SmallIcon>
+          <FontAwesomeIcon icon={isStartCalendarOpen ? faCaretUp : faCaretDown} />
+        </SmallIcon>
        {isStartCalendarOpen && <DateCalendar value={startDate} onChange={setStartDate} />}
       </ItemContainer>
       <LineSeperator />
@@ -128,6 +133,9 @@ const BookCard = () => {
           <FontAwesomeIcon icon={faCalendarAlt} />
         </Icon>
         <Name onClick={toggleReturnDateCalendar}>Return Date</Name>
+        <SmallIcon>
+          <FontAwesomeIcon icon={isReturnCalendarOpen ? faCaretUp : faCaretDown} />
+        </SmallIcon>
         {isReturnCalendarOpen && <DateCalendar value={returnDate} onChange={setReturnDate} />}
       </ItemContainer>
       <Marginer direction="horizontal" margin="2em" />
