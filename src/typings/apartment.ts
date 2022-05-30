@@ -5,5 +5,7 @@ export interface ISublet {
     owner:string
     assetType: string;
     monthlyPrice: string;
-    description:string
+    description:string;
+    roomsNumber: number;
+    haveParking: boolean;
 }
