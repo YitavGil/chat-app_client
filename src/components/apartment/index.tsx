@@ -1,18 +1,19 @@
+import { faAddressCard, faBuilding, faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { ISublet } from "../../typings/apartment";
+import { Button } from "../button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface IApartmentProps extends ISublet {
-    
-}
+interface IApartmentProps extends ISublet {}
 
 const ApartmentContainer = styled.div`
-min-width: 16.5rem;
-min-height: 22.2rem;
-max-height: 22.2;
-box-shadow: 0 1.3px 17px -2px rgba(0, 0, 0, 0.4);
-    ${tw`
+  min-width: 16.5rem;
+  min-height: 22.2rem;
+  max-height: 22.2;
+  box-shadow: 0 1.3px 17px -2px rgba(0, 0, 0, 0.4);
+  ${tw`
         flex
         flex-col
         item-center
@@ -26,18 +27,18 @@ box-shadow: 0 1.3px 17px -2px rgba(0, 0, 0, 0.4);
     `}
 `;
 
-const apartmentThumbnail = styled.div`
-    width: 100%;
-    height: auto;
+const ApartmentThumbnail = styled.div`
+  width: 100%;
+  height: auto;
 
-    img{
-        width: 100%;
-        height: 100%;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const ApartmentTitle = styled.h3`
-    ${tw`
+  ${tw`
         text-base
         font-bold
         text-black
@@ -47,7 +48,7 @@ const ApartmentTitle = styled.h3`
 `;
 
 const PricesContainer = styled.div`
-    ${tw`
+  ${tw`
         w-full
         flex
         justify-start
@@ -55,8 +56,8 @@ const PricesContainer = styled.div`
     `}
 `;
 
-const DailyPrice = styled.h5`
-    ${tw`
+const WeeklyPrice = styled.h5`
+  ${tw`
         text-red-500
         font-bold
         text-sm
@@ -65,7 +66,7 @@ const DailyPrice = styled.h5`
 `;
 
 const MonthlyPrice = styled.h5`
-    ${tw`
+  ${tw`
         text-gray-500
         font-bold
         text-sm
@@ -73,7 +74,7 @@ const MonthlyPrice = styled.h5`
 `;
 
 const SmallIcon = styled.span`
-    ${tw`
+  ${tw`
         text-gray-400
         text-sm
         mr-1
@@ -81,7 +82,7 @@ const SmallIcon = styled.span`
 `;
 
 const DetailsContainer = styled.div`
-    ${tw`
+  ${tw`
         flex
         w-full
         justify-between
@@ -89,30 +90,92 @@ const DetailsContainer = styled.div`
 `;
 
 const ApartmentDetail = styled.span`
-    ${tw`
+  ${tw`
         flex
         items-center
     `}
 `;
 
 const ApartmentInfo = styled.h6`
-    ${tw`
+  ${tw`
         text-gray-400
         text-xs
     `}
 `;
 
 const Seperator = styled.div`
-    min-width: 100%;
-    min-height: 1px;
-    ${tw`
+  min-width: 100%;
+  min-height: 1px;
+  ${tw`
         flex
         bg-gray-300
         mt-2
         mb-2
     `}
+`;
+
+const RentButton = styled(Button)`
+  ${tw`
+        min-w-full
+        mt-5
+    `}
+`;
+
+const SmallText = styled.p`
+    color: inherit;
+    ${tw`
+        text-xs
+        font-thin
+    `}
+
 `
 
 export function Apartment(props: ISublet) {
+  const {
+    name,
+    thumbnailSrc,
+    weeklyPrice,
+    monthlyPrice,
+    location,
+    owner,
+    description,
+    roomsNumber,
+    haveParking,
+  } = props;
 
-} 
+  return (
+    <ApartmentContainer>
+      <ApartmentThumbnail>
+        <img src={thumbnailSrc} alt="thumbnail" />
+      </ApartmentThumbnail>
+      <ApartmentTitle>{name}</ApartmentTitle>
+      <PricesContainer>
+          <WeeklyPrice>{weeklyPrice}₪<SmallText>/Week</SmallText></WeeklyPrice>
+          <MonthlyPrice>{monthlyPrice}₪<SmallText>/Month</SmallText></MonthlyPrice>
+          <ApartmentInfo>Has parking? {haveParking}</ApartmentInfo>
+      </PricesContainer>
+      <Seperator />
+      <DetailsContainer>
+          <ApartmentDetail>
+              <SmallIcon>
+                  <FontAwesomeIcon icon={faBuilding} />
+              </SmallIcon>
+              <ApartmentInfo>{location}</ApartmentInfo>
+          </ApartmentDetail>
+          <ApartmentDetail>
+              <SmallIcon>
+                  <FontAwesomeIcon icon={faPeopleGroup} />
+              </SmallIcon>
+              <ApartmentInfo>{roomsNumber}</ApartmentInfo>
+          </ApartmentDetail>
+          <ApartmentDetail>
+              <SmallIcon>
+                  <FontAwesomeIcon icon={faAddressCard} />
+              </SmallIcon>
+              <ApartmentInfo>{description}</ApartmentInfo>
+          </ApartmentDetail>
+      </DetailsContainer>
+      <RentButton text="Rent Now" />
+    </ApartmentContainer>
+  );
+}
