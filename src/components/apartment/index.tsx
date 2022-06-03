@@ -1,4 +1,8 @@
-import { faAddressCard, faBuilding, faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressCard,
+  faBuilding,
+  faPeopleGroup,
+} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -9,21 +13,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface IApartmentProps extends ISublet {}
 
 const ApartmentContainer = styled.div`
-  min-width: 16.5rem;
+  width: 16.5rem;
   min-height: 22.2rem;
   max-height: 22.2;
   box-shadow: 0 1.3px 17px -2px rgba(0, 0, 0, 0.4);
   ${tw`
-        flex
-        flex-col
-        item-center
-        p-3
-        pb-4
-        bg-white
-        rounded-md
-        m-1
-        sm:m-3
-        md:m-6
+    flex
+    flex-col
+    items-center
+    p-3
+    pb-4
+    bg-white
+    rounded-md
+    m-1
+    sm:m-3
+    md:m-6
     `}
 `;
 
@@ -93,6 +97,7 @@ const ApartmentDetail = styled.span`
   ${tw`
         flex
         items-center
+        justify-between
     `}
 `;
 
@@ -122,13 +127,13 @@ const RentButton = styled(Button)`
 `;
 
 const SmallText = styled.p`
-    color: inherit;
-    ${tw`
+  color: inherit;
+  ${tw`
+        inline-flex
         text-xs
         font-thin
     `}
-
-`
+`;
 
 export function Apartment(props: ISublet) {
   const {
@@ -150,30 +155,34 @@ export function Apartment(props: ISublet) {
       </ApartmentThumbnail>
       <ApartmentTitle>{name}</ApartmentTitle>
       <PricesContainer>
-          <WeeklyPrice>{weeklyPrice}₪<SmallText>/Week</SmallText></WeeklyPrice>
-          <MonthlyPrice>{monthlyPrice}₪<SmallText>/Month</SmallText></MonthlyPrice>
-          <ApartmentInfo>Has parking? {haveParking}</ApartmentInfo>
+        <WeeklyPrice>
+          {weeklyPrice}₪<SmallText>/Week</SmallText>
+        </WeeklyPrice>
+        <MonthlyPrice>
+          {monthlyPrice}₪<SmallText>/Month</SmallText>
+        </MonthlyPrice>
+        <ApartmentInfo>Has Parking! {haveParking}</ApartmentInfo>
       </PricesContainer>
       <Seperator />
       <DetailsContainer>
-          <ApartmentDetail>
-              <SmallIcon>
-                  <FontAwesomeIcon icon={faBuilding} />
-              </SmallIcon>
-              <ApartmentInfo>{location}</ApartmentInfo>
-          </ApartmentDetail>
-          <ApartmentDetail>
-              <SmallIcon>
-                  <FontAwesomeIcon icon={faPeopleGroup} />
-              </SmallIcon>
-              <ApartmentInfo>{roomsNumber}</ApartmentInfo>
-          </ApartmentDetail>
-          <ApartmentDetail>
-              <SmallIcon>
-                  <FontAwesomeIcon icon={faAddressCard} />
-              </SmallIcon>
-              <ApartmentInfo>{description}</ApartmentInfo>
-          </ApartmentDetail>
+        <ApartmentDetail>
+          <SmallIcon>
+            <FontAwesomeIcon icon={faBuilding} />
+          </SmallIcon>
+          <ApartmentInfo>{location}</ApartmentInfo>
+        </ApartmentDetail>
+        <ApartmentDetail>
+          <SmallIcon>
+            <FontAwesomeIcon icon={faPeopleGroup} />
+          </SmallIcon>
+          <ApartmentInfo>{roomsNumber}</ApartmentInfo>
+        </ApartmentDetail>
+        <ApartmentDetail>
+          <SmallIcon>
+            <FontAwesomeIcon icon={faAddressCard} />
+          </SmallIcon>
+          <ApartmentInfo>{description}</ApartmentInfo>
+        </ApartmentDetail>
       </DetailsContainer>
       <RentButton text="Rent Now" />
     </ApartmentContainer>
