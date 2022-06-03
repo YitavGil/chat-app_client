@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Apartment } from '../../components/apartment';
 import { ISublet } from '../../typings/apartment';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import './carousel.scss'
 
 const NewApartmentsContainer = styled.div`
     ${tw`
@@ -41,6 +44,8 @@ const ApartmentsContainer = styled.div`
 `
 
 const Apartments = () => {
+  const [current, setCurrent] = useState(0)
+
 
   const testHouse: ISublet = {
     name: "Small place for a week rent",
@@ -72,8 +77,25 @@ const Apartments = () => {
     <NewApartmentsContainer>
         <Title>Top New Deals</Title>
         <ApartmentsContainer>
+          <Carousel
+           className="carousel"
+           centerMode
+           showStatus={false}
+           infiniteLoop
+           showIndicators
+           dynamicHeight={false}
+           emulateTouch
+           swipeScrollTolerance={50}
+           centerSlidePercentage={33.3}
+           showThumbs={false}
+           autoPlay
+           showArrows={true}
+           >
             <Apartment {...testHouse} />
             <Apartment {...testHouse2} />
+            <Apartment {...testHouse2} />
+            <Apartment {...testHouse2} />
+          </Carousel>
         </ApartmentsContainer>
     </NewApartmentsContainer>
   )
