@@ -5,3 +5,11 @@
 //     height: 50vh;
    
 // }
+
+@media only screen and (max-width: 600px) {
+    .carousel{
+    display: flex;
+    width: fit-content;
+    margin-left: 18rem;
+    }
+  }
