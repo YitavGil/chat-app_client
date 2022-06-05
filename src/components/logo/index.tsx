@@ -4,6 +4,10 @@ import tw from "twin.macro";
 
 import HomeLogo from '../../assets/images/Anonymous-Lighthouse.svg';
 
+interface ILogoProps {
+    color?: "white" | "dark"
+}
+
 const LogoContainer = styled.div`
     ${tw`
         flex
@@ -19,7 +23,8 @@ const LogoText = styled.div`
         text-black
         m-1
     `}
-`;
+    ${({ color }: any) => (color === "white" ? tw`text-white` : tw`text-black`)}
+`as any;
 
 const Image = styled.div`
     width: auto;
@@ -34,12 +39,14 @@ const Image = styled.div`
     }
 `
 
-export const Logo = () => {
+export const Logo = (props: ILogoProps) => {
+    const { color } = props;
+
     return <LogoContainer>
         <Image>
             <img src={HomeLogo} alt="home-logo"/>
         </Image>
-        <LogoText>LightHouse</LogoText>
+        <LogoText color={color || "dark"}>LightHouse</LogoText>
     </LogoContainer>
 
 }
