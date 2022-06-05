@@ -1,4 +1,4 @@
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
@@ -125,6 +125,25 @@ const SmallText = styled.h6`
   `};
 `;
 
+const BottomContainer = styled.div`
+  ${tw`
+    w-full
+    flex
+    max-w-screen-2xl
+    justify-center
+    md:justify-end
+    mt-7
+    md:mt-1
+  `};
+`;
+
+const CopyrightText = styled.small`
+  font-size: 12px;
+  ${tw`
+    text-gray-300
+  `}
+`;
+
 const Footer = () => {
   return (
     <FooterContainer>
@@ -181,7 +200,21 @@ const Footer = () => {
             <SmallText>+972 52-666-666</SmallText>
           </HorizontalContainer>
         </SectionContainer>
+        <SectionContainer>
+          <HeaderTitle>Email</HeaderTitle>
+          <HorizontalContainer>
+            <BlueIcon>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </BlueIcon>
+            <SmallText>info@lighthouse.com</SmallText>
+          </HorizontalContainer>
+        </SectionContainer>
       </InnerContainer>
+      <BottomContainer>
+        <CopyrightText>
+          Copyright &copy; {new Date().getFullYear()} Lighthouse. All Rights Reserved.
+        </CopyrightText>
+      </BottomContainer>
     </FooterContainer>
   );
 };
